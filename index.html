@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big Green</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="header-top">
+        <div class="search" id="search">
+            <input type="text" placeholder="Tìm sản phẩm" />
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <a href="">
+            <img src="./images/logo.png" alt="" />
+        </a>
+        <div class="contact">
+            <div class="contact-me">
+                <div class="phone-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="support">
+                    <p>Hỗ trợ</p>
+                    <h2>1900 6750</h2>
+                </div>
+            </div>
+            <div class="cart" >
+                <i class="bx bx-cart-alt" id="cart"></i>
+            </div>
+            <div class="users">
+                <i class="bx bx-user" id="user-login"></i>
+                <ul class="logIn-logOut " id="form-LogIn-Register">
+                    <li><span id="login">Đăng nhập</span></li>
+                    <li><span id="register">Đăng ký</span></li>
+                </ul>
+                <ul class="logIn-logOut hide" id="form-LogOut">
+                    <li id="txtNameUser"></li>
+                    <li><span id="">Danh sách yêu thích</span></li>
+                    <li><span id="settingUser">Cài đặt tài khoản</span></li>
+                    <li><span id="logOut">Đăng xuất</span></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="modal modal-register hide " id="modal-register">
+        <div name="form-register" class="modal-inner form-register" id="form-register">
+            <div class="modal-header modal-register-header">
+                <span class="iconClose" id="iconClose">X</span>
+                <h2>Đăng ký tài khoản</h2>
+            </div>
+            <div class="modal-body modal-register-body">
+                <div class="form-control">
+                    <input type="text" name="username" id="username" placeholder="Enter your name"><br>
+                    <small class="error-username error" id="error_username"></small>
+                </div>
+                <div class="form-control">
+                    <input type="email" name="email" id="email" placeholder="Enter your email"><br>
+                    <small class="error-email error" id="error_email"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" name="password" id="password" placeholder="Enter your password"><br>
+                    <small class="error-password error" id="error_password"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" name="re_password" id="re_password" placeholder="Enter your re_password"><br>
+                    <small class="error-re_password error" id="error_re_password"></small>
+                </div>
+            </div>
+            <div class="modal-footer modal-register-footer">
+                <button type="submit" class="btn" id="btn-register">Đăng ký</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal-logIn hide " id="modal-Login">
+        <div class="modal-inner form-logIn">
+            <div class="modal-header modal-logIn-header">
+                <span class="iconCloseLogin" id="iconCloseLogin">X</span>
+                <h2>Đăng nhập</h2>
+                <div id="Notification"></div>
+            </div>
+            <div class="modal-body modal-logIn-body">
+                <div class="form-control">
+                    <input type="email" name="emailLogin" id="emailLogin" placeholder="Enter your email"><br>
+                    <small class="error-re_password error"></small>
+                    
+                </div>
+                <div class="form-control">
+                    <input type="password" name="passwordLogin" id="passwordLogin" placeholder="Enter your password"><br>
+                    <small class="error-re_password error"></small>
+                    
+                </div>
+                <div class="form-group">
+                    <small><a href="">Quên mật khẩu</a> </small><br><br>
+                </div>
+            </div>
+            <div class="modal-footer modal-logIn-footer">
+                <button class="btn" id="btn-logIn">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal-cart hide" id="modal-Cart">
+        <div class="modal-inner form-cart">
+            <div class="modal-header modal-cart-header">
+                <span class="iconCloseCart" id="iconCloseCart">X</span>
+                <h2>Giỏ hàng</h2>
+            </div>
+            <div class="modal-body modal-cart-body">
+                <div class="cart-form">
+                    <img src="./images/chuoi.png" alt="">
+                    <div class="cart-group">
+                        <p>Chuối Gia Lai</p>
+                        <div class="cart-control">
+                            <div class="cart-form-control">
+                                <a>Số lượng:</a>
+                                <div class="btn-control">
+                                    <input type="button" value="-">
+                                    <input type="text" value="1">
+                                    <input type="button" value="+">
+                                </div>
+                            </div>
+                            <div class="cart-delete">
+                                <p>120.000đ</p>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-cart-footer">
+                <div class="total-price">
+                    <p>Tổng tiền: </p>
+                    <span>240.000đ</span>
+                </div>
+                <div class="btn-footer">
+                    <button class="btn btn-cart-footer" id="btn-cart">Thanh toán</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slider">
+        <div class="menu">
+            <div class="nav">
+                <ul id="main-menu">
+                    <li><a href="">Trang chủ</a></li>
+                    <li><a href="">Giới thiệu</a></li>
+                    <li class="hash-child">
+                        <a href="">Sản phẩm </a>
+                        <ul class="sub-menu">
+                            <li class="hash-child">
+                                <a href="">Củ quả các loại </a>
+                                <ul class="sub-menu">
+                                    <li><a href="">Mướp</a></li>
+                                    <li><a href="">Đu đủ</a></li>
+                                    <li><a href="">Bông cải xanh</a></li>
+                                    <li><a href="">Các loại củ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">Rau các loại</a></li>
+                            <li class="hash-child">
+                                <a href="">Thực phẩm</a>
+                                <ul class="sub-menu">
+                                    <li><a href="">Mướp</a></li>
+                                    <li><a href="">Đu đủ</a></li>
+                                    <li><a href="">Bông cải xanh</a></li>
+                                    <li><a href="">Các loại củ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">Trái cây</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Đặt hàng</a></li>
+                    <li><a href="">Tin tức</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="big-icon">
+            <div class="card">
+                <div class="card-img">
+                    <img src="./images/gao.jpg" alt="" />
+                </div>
+                <p><a href="">Gạo</a></p>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="./images/gao.jpg" alt="" />
+                </div>
+                <p><a href="">Gạo</a></p>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="./images/gao.jpg" alt="" />
+                </div>
+                <p><a href="">Gạo</a></p>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="./images/gao.jpg" alt="" />
+                </div>
+                <p><a href="">Gạo</a></p>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="./images/gao.jpg" alt="" />
+                </div>
+                <p><a href="">Gạo</a></p>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="./images/gao.jpg" alt="" />
+                </div>
+                <p><a href="">Gạo</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="white"></div>
+    <div class="main-info">
+        <div class="main-info-banner">
+            <div class="info-banner">
+                <div class="banner-img">
+                    <img src="./images/banner_intro.jpg" alt="" />
+                </div>
+                <div class="banner-info">
+                    <h2>Chúng tôi cung cấp</h2>
+                    <h1>Các sản phẩm nông sản tươi - sạch</h1>
+                    <p>
+                        Cửa hàng <b><a href="">Nông sản sạch</a></b> là một website cung
+                        cấp thực phẩm an toàn, nông sản sạch cho người dân. Với mong muốn
+                        mang tới mọi gia đình những thực phẩm an toàn nhất trước mối lo
+                        ngại về thực phẩm bẩn tại Việt Nam.
+                    </p>
+                    <p>
+                        Với mục đích là <b>"Mang thiên nhiên về với căn nhà của bạn"</b>
+                    </p>
+                </div>
+            </div>
+
+            <div class="img-intro">
+                <img src="./images/img_intro_1.jpg" alt="" />
+                <img src="./images/img_intro_1.jpg" alt="" />
+                <img src="./images/img_intro_1.jpg" alt="" />
+            </div>
+        </div>
+    </div>
+    <div class="products">
+        <h1>Sản phẩm</h1>
+        <div class="btn-product">
+            <span>Tất cả</span>
+            <span>Củ quả các loại</span>
+            <span>Rau các loại</span>
+            <span>Thực phẩm</span>
+            <span>Trái cây</span>
+        </div>
+        <div class="card-products">
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                    <div class="cartIcon">
+                            <i class="fa-solid fa-eye"></i>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-gears"></i>
+                    </div>
+                </div>
+                <div class="card-product-info">
+                    <p>Chuối Gia Lai</p>
+                    <h3 class="price">120.000đ <del>150.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Chuối Gia Lai</p>
+                    <h3 class="price">120.000đ <del>150.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Chuối Gia Lai</p>
+                    <h3 class="price">120.000đ <del>150.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Chuối Gia Lai</p>
+                    <h3 class="price">120.000đ <del>150.000đ</del></h3>
+                </div>
+            </div>
+        </div>
+        <div class="card-products">
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Chuối Gia Lai</p>
+                    <h3 class="price">120.000đ <del>150.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Chuối Gia Lai</p>
+                    <h3 class="price">120.000đ <del>150.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Chuối Gia Lai</p>
+                    <h3 class="price">120.000đ <del>150.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Chuối Gia Lai</p>
+                    <h3 class="price">120.000đ <del>150.000đ</del></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="img-banner">
+        <div class="img-banner-a">
+            <div class="img-banner1"></div>
+            <div class="img-banner2"></div>
+            <div class="img-banner3"></div>
+        </div>
+    </div>
+    <div class="products">
+        <h1>Phụ kiện nông nghiệp</h1>
+        <div class="btn-product">
+            <span>Tất cả</span>
+            <span>Dụng cụ làm vuòn</span>
+            <span>Hạt giống</span>
+        </div>
+        <div class="card-products">
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Dụng cụ làm cỏ kẻ gạch</p>
+                    <h3 class="price">310.000đ <del>350.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Dụng cụ làm cỏ kẻ gạch</p>
+                    <h3 class="price">310.000đ <del>350.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Dụng cụ làm cỏ kẻ gạch</p>
+                    <h3 class="price">310.000đ <del>350.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Dụng cụ làm cỏ kẻ gạch</p>
+                    <h3 class="price">310.000đ <del>350.000đ</del></h3>
+                </div>
+            </div>
+        </div>
+        <div class="card-products">
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Dụng cụ làm cỏ kẻ gạch</p>
+                    <h3 class="price">310.000đ <del>350.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Dụng cụ làm cỏ kẻ gạch</p>
+                    <h3 class="price">310.000đ <del>350.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Dụng cụ làm cỏ kẻ gạch</p>
+                    <h3 class="price">310.000đ <del>350.000đ</del></h3>
+                </div>
+            </div>
+            <div class="card-product">
+                <div class="card-product-img">
+                    <img src="./images/chuoi.png" alt="" />
+                    <div class="card-add"></div>
+                </div>
+                <div class="card-product-info">
+                    <p>Dụng cụ làm cỏ kẻ gạch</p>
+                    <h3 class="price">310.000đ <del>350.000đ</del></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="comment-item">
+            <h1>00</h1>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
+                facilis ipsa deleniti mollitia, est exercitationem doloremque magnam
+                excepturi, sed vero nisi inventore harum. Doloremque asperiores
+                officiis, sequi distinctio neque quidem repellat illum possimus
+                inventore suscipit quisquam magnam. Vero atque ad reprehenderit
+                provident recusandae et itaque? Voluptate deleniti quas illo
+                distinctio.
+            </p>
+            <h3>Cao Phước Bình</3>
+                <h4>CEO vinamilk</h4>
+                <div class="comment-img">
+                    <img src="./images/chuoi.png" alt="">
+                </div>
+        </div>
+    </div>
+    <div class="info">
+        <h1>Tin tức nông nghiệp</h1>
+
+        <div class="list-info">
+            <div class="card-list">
+                <div class="card-info">
+                    <img src="./images/banner-4.jpg" alt="">
+                    <h3>Rau xanh tăng giá mạnh vì trời mưa, người dân nội thành lao đao</h3>
+                    <div class="card-date">
+                        <p>cafein team</p>
+                        <p>Ngày 20/02/2022</p>
+                    </div>
+                    <div class="card-info-main">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut illo eos.
+                            Reprehenderit nihil consectetur tenetur provident quos, dolores delectus et neque
+                            adipisci est officia...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list">
+                <div class="card-info">
+                    <img src="./images/banner-4.jpg" alt="">
+                    <h3>Rau xanh tăng giá mạnh vì trời mưa, người dân nội thành lao đao</h3>
+                    <div class="card-date">
+                        <p>cafein team</p>
+                        <p>Ngày 20/02/2022</p>
+                    </div>
+                    <div class="card-info-main">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut illo eos.
+                            Reprehenderit nihil consectetur tenetur provident quos, dolores delectus et neque
+                            adipisci est officia...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list">
+                <div class="card-info">
+                    <img src="./images/banner-4.jpg" alt="">
+                    <h3>Rau xanh tăng giá mạnh vì trời mưa, người dân nội thành lao đao</h3>
+                    <div class="card-date">
+                        <p>cafein team</p>
+                        <p>Ngày 20/02/2022</p>
+                    </div>
+                    <div class="card-info-main">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut illo eos.
+                            Reprehenderit nihil consectetur tenetur provident quos, dolores delectus et neque
+                            adipisci est officia...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="support-footer">
+            <div class="support-info">
+                <div class="support-info-me">
+                    <h3>Hỗ trợ 24/7</h3>
+                    <p>Liên hệ chúng tôi 24h</p>
+                </div>
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <div class="support-info">
+                <div class="support-info-me">
+                    <h3>Hỗ trợ 24/7</h3>
+                    <p>Liên hệ chúng tôi 24h</p>
+                </div>
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <div class="support-info">
+                <div class="support-info-me">
+                    <h3>Hỗ trợ 24/7</h3>
+                    <p>Liên hệ chúng tôi 24h</p>
+                </div>
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-support">
+
+            <div class="footer-support1">
+                <a href="">
+                    <img src="./images/logo_footer.jpg" alt="">
+
+                </a>
+                <p>Cửa hàng <a href="">Nông sản sạch</a> là một website cũng cấp thực phẩm an toàn, nông sản sạch cho
+                    người dân.</p>
+                <p>Lorem ipsum dolor sit amet co</p>
+                <h2>1900 6750</h2>
+            </div>
+            <div class="footer-support1">
+                <p><b>Về chúng tôi</b></p>
+                <div class="list-support">
+                    <div class="list-support1">
+                        <a href="">Trang chủ</a>
+                        <a href="">Giới thiệu</a>
+                        <a href="">Sản phẩm</a>
+                    </div>
+                    <div class="list-support1">
+                        <a href="">Đặt hàng</a>
+                        <a href="">Tin tức</a>
+                        <a href="">Liên hệ</a>
+                    </div>
+                </div>
+                <div class="register">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h1>Đăng ký</h1>
+                        <p>nhận thông tin khuyến mãi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-support1">
+                <p><b>Hỗ trợ khách hàng</b></p>
+                <div class="list-support1">
+                    <a href="">Trang chủ</a>
+                    <a href="">Giới thiệu</a>
+                    <a href="">Sản phẩm</a>
+                </div>
+                <div class="sigUp">
+                    <div>
+                        <input type="mail" name="mail" id="mail" placeholder="Email">
+                        <button class="btn-sigup">Đăng ký</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-copyright">
+            &copy;Bản quền thuộc về big-green team | cung cấp bởi ...
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="./js/logic.js"></script> -->
+<script src="./js/app.js"></script>
+
+
+</html>
